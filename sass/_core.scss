@@ -1,0 +1,381 @@
+/*  ====================================================
+    0.1 Mixins and Variables
+    ==================================================== */
+$primary_font_family: "proxima-nova", "Proxima Nova", "Helvetica Neue", "Helvetica", sans-serif;
+$secondary_font_family: "chaparral-pro", "Chaparral Pro", "Georgia", sans-serif;
+
+$rule_color: #CB390A;
+
+@mixin transition($type: all, $duration: .15s, $function: ease-in-out){
+  -webkit-transition: $type $duration $function;
+  -moz-transition: $type $duration $function;
+  -o-transition: $type $duration $function;
+  transition: $type $duration $function;
+}
+
+@mixin linear_gradient($first_color: rgba(0,0,0,0), $second_color:rgba(0,0,0,.25), $fallback_color: rgba(0,0,0,.3)){
+  background: -moz-linear-gradient(top,  $first_color 0%, $second_color 100%), $fallback_color; /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$first_color), color-stop(100%,$second_color)), $fallback_color; /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  $first_color 0%, $second_color 100%), $fallback_color; /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  $first_color 0%, $second_color 100%), $fallback_color; /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  $first_color 0%, $second_color 100%), $fallback_color; /* IE10+ */
+  background: linear-gradient(to bottom,  $first_color 0%, $second_color 100%), $fallback_color; /* W3C */
+}
+
+/*  ====================================================
+    0.2 Media Query mixins
+    - Mixins for inline MQs. Avoids goop at bottom of page, 
+      and undoing of style / poor CSS code scent.
+    ==================================================== */
+
+// For tabelts and mid-sized mobile devices
+@mixin mq-tablet {
+  @media (max-width: 54em) {
+    @content;
+  } 
+}
+
+// For smartphones and personal (small) mobile devices
+@mixin mq-personal {
+  @media  (max-width: 30em) {
+    @content;
+  }
+}
+
+/*  ====================================================
+    1.0 Generic/misc styles
+    ==================================================== */
+body {
+  font-family: $primary_font_family;
+  color:#333;
+  font-size: medium;
+}
+
+
+.hide-text {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.wrap {
+  width:100%;
+  max-width:1000px;
+  margin:0 auto;
+}
+
+.small-wrap {
+  width: 92%;
+  max-width: 788px;
+  margin:0 auto;
+
+  @include mq-personal{
+    width:84%; 
+  }
+}
+
+.hidden-section {
+  display:none;
+}
+
+.overlay {
+  display: none;
+  width: 100%;
+  height:100%;
+  opacity:.3;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:1;
+}
+
+.alt-overlay { background-color:black; }
+
+.how-overlay {
+  display: block;
+  background-color:#CA9F51;
+  opacity: .87;
+}
+
+.location-overlay {
+  display: block;
+  background-color:#5790B3;
+  opacity: .87;
+}
+
+.button {
+  font-family: $secondary_font_family;
+  text-align: center;
+  font-size: 1.2em;
+  font-style:italic;
+  text-decoration: none;
+  color:white;
+  font-weight: normal;
+  display: block;
+  margin:0 auto;
+  width:10em;
+  border:1px solid rgba(0,0,0,.5);
+  padding:1em 1em .75em;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.3), inset 0 0 2px rgba(255,255,255,.7);
+  @include linear_gradient(rgba(150,150,150,.05), rgba(150,150,150,.09), transparent);
+
+  &:hover { color:white; }
+}
+
+
+/*  ====================================================
+    2.0 Main Site styles
+    ==================================================== */
+
+.top-bar {
+  background-color:rgba(255,255,255,0);
+  padding:1em;
+  position: relative;
+  z-index:2;
+}
+
+.enchant-logo {
+  display: block;
+  text-align: center;
+  margin:0 auto;
+  background-image: url('../img/enchant-logo-light.png');
+  background-repeat:no-repeat;
+  background-position:center center;
+  width:138px;
+  height:34px;
+}
+
+.header {
+  display: block;
+  width:100%;
+  height:540px;
+  max-height: 960px;
+  background-image:url('../img/header-inspiration.jpg');
+  background-repeat:no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position:relative;
+
+  @include mq-tablet {
+    font-size: 2.2em;
+  }
+}
+
+.header h1 { z-index:2; position:relative; }
+
+.header-title {
+  color:white;
+  font-size: 2.8em;
+  text-align:center;
+  font-weight:normal;
+  margin: 1em auto 1.5em;
+  text-shadow: 0 1px 2px rgba(0,0,0,.3);
+  padding:0 1em;
+
+  @include mq-tablet { font-size: 2.2em; }
+  @include mq-personal { font-size: 1.5em; }
+}
+
+.why, .how, .location {
+  text-align: center;
+  padding-top:6em;
+  padding-bottom:6em;
+}
+
+.rules {
+  margin:0;
+  padding:0;
+  list-style: none;
+}
+  
+.rule {
+  margin-bottom: 6em;  
+}
+
+.rule h3 {
+  font-size: 1.2em;
+  color: $rule_color;
+  font-style:italic;
+  font-family: $secondary_font_family;
+  font-weight: normal;
+}
+
+.anti-rule {
+  color: #c1c1c1;
+  font-size:1.2em;
+  font-weight:100;
+  margin-bottom: .75em;
+
+  @include mq-personal {
+    font-size:1em; 
+    margin-bottom:1em; 
+    line-height:1.2; 
+  }
+}
+
+.actual-rule {
+  font-family: $secondary_font_family;
+  font-size: 2.6em;
+  color:#444;
+  margin-top:0;
+  line-height: 1.2;
+  font-weight: 100;
+
+  strong { font-weight: 100; }
+  @include mq-personal { font-size:1.2em; }
+}
+
+
+.how {
+  position: relative;
+  background-image:url('../img/whiteboard-love.jpg');
+  background-repeat:no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color:white;
+  padding:10em 0;
+
+  dd, dt { margin:0; } 
+  dl, p  { z-index:2; position: relative; }
+  p      { font-weight:100; }
+}
+
+.question-and-answer {
+  font-family: $secondary_font_family;
+  font-weight:100;
+  font-size: 2em;
+  margin:0 auto 3em;
+
+  b { font-weight: normal; }
+  @include mq-personal { font-size:1.2em; }
+}
+
+.products-and-clients {
+  background:#444;
+  padding:3em 0;
+
+  p { 
+    font-family: $secondary_font_family;
+    font-size:1.2em;
+    color:#222;
+    font-style:italic;
+    text-align:center;
+    margin:0 auto 4em;
+    padding:0 3em;
+  }
+}
+
+.clients {
+  margin: 0;
+  padding:0;
+  list-style: none;
+
+  li { display:inline-block; 
+    @include mq-personal {
+      display:block; 
+      margin:2em auto; 
+      text-align:center;
+    }
+  } 
+
+  li a { 
+    display: inline-block; 
+    vertical-align:top;
+    margin:1.6em; 
+  }
+}
+
+.client-kale a {
+  width:89px;
+  height:35px;
+  background-image:url('../img/logo-kale.png');
+}
+
+.client-cor a {
+  width:66px;
+  height:31px;
+  background-image:url('../img/logo-cor.png');
+}
+
+.client-firstround a {
+  width:98px;
+  height:48px;
+  background-image:url('../img/logo-firstround.png');
+  position: relative;
+  top:-1em;
+}
+
+.client-fortify a {
+  width:142px;
+  height:39px;
+  background-image:url('../img/logo-fortify.png');
+}
+
+.client-suap a {
+  width:127px;
+  height:36px;
+  background-image:url('../img/logo-suap.png');
+}
+
+.client-fosterly a {
+  width:148px;
+  height:29px;
+  background-image:url('../img/logo-fosterly.png');
+}
+
+.location {
+  position: relative;
+  background-image:url('../img/alexandria.jpg');
+  background-repeat:no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color:white;
+  padding:10em 0;
+
+  h2, h3, p, ul {
+    position:relative;
+    z-index: 2;
+  }
+
+  h2 {
+    font-weight:normal;
+    font-size: 2em;
+    margin-bottom: 0;
+  }
+
+  h3 {
+    font-family: $secondary_font_family;
+    color:#374D58;
+    font-size:1.2em;
+    font-weight: normal;
+    font-style: italic;
+    margin-top:.5em;
+    margin-bottom:5em;
+    padding:0 3em;
+  }
+
+  p {
+    font-weight: 100;
+    font-size: 1.2em;
+    max-width: 528px;
+    margin: 0 auto;
+    text-align: center;
+    padding:0 3em;
+  }
+}
+
+.meetups {
+  list-style: none;
+  margin:0;
+  padding:0;
+}
