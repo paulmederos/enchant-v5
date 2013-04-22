@@ -1794,46 +1794,46 @@ textarea {
 /*  ====================================================
     1.0 Generic/misc styles
     ==================================================== */
-/* line 48, ../sass/_core.scss */
+/* line 79, ../sass/_core.scss */
 body {
   font-family: "proxima-nova", "Proxima Nova", "Helvetica Neue", "Helvetica", sans-serif;
   color: #333;
   font-size: medium;
 }
 
-/* line 55, ../sass/_core.scss */
+/* line 86, ../sass/_core.scss */
 .hide-text {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
 }
 
-/* line 61, ../sass/_core.scss */
+/* line 92, ../sass/_core.scss */
 .wrap {
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
 }
 
-/* line 67, ../sass/_core.scss */
+/* line 98, ../sass/_core.scss */
 .small-wrap {
   width: 92%;
   max-width: 788px;
   margin: 0 auto;
 }
 @media (max-width: 30em) {
-  /* line 67, ../sass/_core.scss */
+  /* line 98, ../sass/_core.scss */
   .small-wrap {
     width: 84%;
   }
 }
 
-/* line 77, ../sass/_core.scss */
+/* line 108, ../sass/_core.scss */
 .hidden-section {
   display: none;
 }
 
-/* line 81, ../sass/_core.scss */
+/* line 112, ../sass/_core.scss */
 .overlay {
   display: none;
   width: 100%;
@@ -1845,26 +1845,26 @@ body {
   z-index: 1;
 }
 
-/* line 92, ../sass/_core.scss */
+/* line 123, ../sass/_core.scss */
 .alt-overlay {
   background-color: black;
 }
 
-/* line 94, ../sass/_core.scss */
+/* line 125, ../sass/_core.scss */
 .how-overlay {
   display: block;
   background-color: #CA9F51;
   opacity: .87;
 }
 
-/* line 100, ../sass/_core.scss */
+/* line 131, ../sass/_core.scss */
 .location-overlay {
   display: block;
   background-color: #5790B3;
   opacity: .87;
 }
 
-/* line 106, ../sass/_core.scss */
+/* line 137, ../sass/_core.scss */
 .button {
   font-family: "chaparral-pro", "Chaparral Pro", "Georgia", sans-serif;
   text-align: center;
@@ -1893,7 +1893,7 @@ body {
   background: linear-gradient(to bottom, rgba(150, 150, 150, 0.05) 0%, rgba(150, 150, 150, 0.09) 100%), transparent;
   /* W3C */
 }
-/* line 123, ../sass/_core.scss */
+/* line 154, ../sass/_core.scss */
 .button:hover {
   color: white;
 }
@@ -1901,7 +1901,7 @@ body {
 /*  ====================================================
     2.0 Main Site styles
     ==================================================== */
-/* line 131, ../sass/_core.scss */
+/* line 162, ../sass/_core.scss */
 .top-bar {
   background-color: rgba(255, 255, 255, 0);
   padding: 1em;
@@ -1909,23 +1909,32 @@ body {
   z-index: 2;
 }
 
-/* line 138, ../sass/_core.scss */
+/* line 169, ../sass/_core.scss */
 .enchant-logo {
   display: block;
   text-align: center;
   margin: 0 auto;
   background-image: url("../img/enchant-logo-light.png");
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: 0 0;
   width: 138px;
   height: 34px;
 }
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 13 / 10), only screen and (min-resolution: 120dpi) {
+  /* line 169, ../sass/_core.scss */
+  .enchant-logo {
+    background-image: url("../img/enchant-logo-light@2x.png");
+    -moz-background-size: 138px 34px;
+    -webkit-background-size: 138px 34px;
+    background-size: 138px 34px;
+  }
+}
 
-/* line 149, ../sass/_core.scss */
+/* line 185, ../sass/_core.scss */
 .header {
   display: block;
   width: 100%;
-  height: 540px;
+  height: 320px;
   max-height: 960px;
   background-image: url("../img/header-inspiration.jpg");
   background-repeat: no-repeat;
@@ -1936,20 +1945,14 @@ body {
   background-size: cover;
   position: relative;
 }
-@media (max-width: 54em) {
-  /* line 149, ../sass/_core.scss */
-  .header {
-    font-size: 2.2em;
-  }
-}
 
-/* line 168, ../sass/_core.scss */
+/* line 200, ../sass/_core.scss */
 .header h1 {
   z-index: 2;
   position: relative;
 }
 
-/* line 170, ../sass/_core.scss */
+/* line 202, ../sass/_core.scss */
 .header-title {
   color: white;
   font-size: 2.8em;
@@ -1960,38 +1963,48 @@ body {
   padding: 0 1em;
 }
 @media (max-width: 54em) {
-  /* line 170, ../sass/_core.scss */
+  /* line 202, ../sass/_core.scss */
   .header-title {
     font-size: 2.2em;
   }
 }
 @media (max-width: 30em) {
-  /* line 170, ../sass/_core.scss */
+  /* line 202, ../sass/_core.scss */
   .header-title {
     font-size: 1.5em;
   }
 }
 
-/* line 183, ../sass/_core.scss */
+/* line 215, ../sass/_core.scss */
 .why, .how, .location {
   text-align: center;
-  padding-top: 6em;
-  padding-bottom: 6em;
 }
 
-/* line 189, ../sass/_core.scss */
+/* line 219, ../sass/_core.scss */
 .rules {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* line 195, ../sass/_core.scss */
+/* line 225, ../sass/_core.scss */
 .rule {
-  margin-bottom: 6em;
+  margin: 24em auto;
+}
+@media (max-width: 54em) {
+  /* line 225, ../sass/_core.scss */
+  .rule {
+    margin: 12em auto;
+  }
+}
+@media (max-width: 30em) {
+  /* line 225, ../sass/_core.scss */
+  .rule {
+    margin: 6em auto;
+  }
 }
 
-/* line 199, ../sass/_core.scss */
+/* line 232, ../sass/_core.scss */
 .rule h3 {
   font-size: 1.2em;
   color: #cb390a;
@@ -2000,7 +2013,7 @@ body {
   font-weight: normal;
 }
 
-/* line 207, ../sass/_core.scss */
+/* line 240, ../sass/_core.scss */
 .anti-rule {
   color: #c1c1c1;
   font-size: 1.2em;
@@ -2008,7 +2021,7 @@ body {
   margin-bottom: .75em;
 }
 @media (max-width: 30em) {
-  /* line 207, ../sass/_core.scss */
+  /* line 240, ../sass/_core.scss */
   .anti-rule {
     font-size: 1em;
     margin-bottom: 1em;
@@ -2016,7 +2029,7 @@ body {
   }
 }
 
-/* line 220, ../sass/_core.scss */
+/* line 253, ../sass/_core.scss */
 .actual-rule {
   font-family: "chaparral-pro", "Chaparral Pro", "Georgia", sans-serif;
   font-size: 2.6em;
@@ -2025,18 +2038,18 @@ body {
   line-height: 1.2;
   font-weight: 100;
 }
-/* line 228, ../sass/_core.scss */
+/* line 261, ../sass/_core.scss */
 .actual-rule strong {
   font-weight: 100;
 }
 @media (max-width: 30em) {
-  /* line 220, ../sass/_core.scss */
+  /* line 253, ../sass/_core.scss */
   .actual-rule {
     font-size: 1.2em;
   }
 }
 
-/* line 233, ../sass/_core.scss */
+/* line 266, ../sass/_core.scss */
 .how {
   position: relative;
   background-image: url("../img/whiteboard-love.jpg");
@@ -2047,126 +2060,147 @@ body {
   -o-background-size: cover;
   background-size: cover;
   color: white;
-  padding: 10em 0;
+  padding: 20em 0;
 }
-/* line 245, ../sass/_core.scss */
+/* line 278, ../sass/_core.scss */
 .how dd, .how dt {
   margin: 0;
 }
-/* line 246, ../sass/_core.scss */
+/* line 279, ../sass/_core.scss */
 .how dl, .how p {
   z-index: 2;
   position: relative;
 }
-/* line 247, ../sass/_core.scss */
+/* line 281, ../sass/_core.scss */
 .how p {
   font-weight: 100;
 }
+@media (max-width: 54em) {
+  /* line 266, ../sass/_core.scss */
+  .how {
+    padding: 10em 0;
+  }
+}
+@media (max-width: 30em) {
+  /* line 266, ../sass/_core.scss */
+  .how {
+    padding: 5em 0;
+  }
+}
 
-/* line 250, ../sass/_core.scss */
+/* line 287, ../sass/_core.scss */
 .question-and-answer {
   font-family: "chaparral-pro", "Chaparral Pro", "Georgia", sans-serif;
   font-weight: 100;
   font-size: 2em;
   margin: 0 auto 3em;
 }
-/* line 256, ../sass/_core.scss */
+/* line 293, ../sass/_core.scss */
 .question-and-answer b {
   font-weight: normal;
 }
 @media (max-width: 30em) {
-  /* line 250, ../sass/_core.scss */
+  /* line 287, ../sass/_core.scss */
   .question-and-answer {
     font-size: 1.2em;
   }
 }
 
-/* line 260, ../sass/_core.scss */
+/* line 297, ../sass/_core.scss */
 .products-and-clients {
   background: #444;
   padding: 3em 0;
 }
-/* line 264, ../sass/_core.scss */
+@media (max-width: 30em) {
+  /* line 297, ../sass/_core.scss */
+  .products-and-clients {
+    padding: 3em 0 1.5em;
+  }
+}
+/* line 305, ../sass/_core.scss */
 .products-and-clients p {
   font-family: "chaparral-pro", "Chaparral Pro", "Georgia", sans-serif;
   font-size: 1.2em;
   color: #222;
   font-style: italic;
   text-align: center;
-  margin: 0 auto 4em;
-  padding: 0 3em;
+  margin: 0;
+}
+@media (max-width: 30em) {
+  /* line 305, ../sass/_core.scss */
+  .products-and-clients p {
+    margin-bottom: .5em;
+  }
 }
 
-/* line 275, ../sass/_core.scss */
+/* line 317, ../sass/_core.scss */
 .clients {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-/* line 280, ../sass/_core.scss */
+/* line 322, ../sass/_core.scss */
 .clients li {
   display: inline-block;
+  width: 162px;
 }
 @media (max-width: 30em) {
-  /* line 280, ../sass/_core.scss */
+  /* line 322, ../sass/_core.scss */
   .clients li {
     display: block;
-    margin: 2em auto;
-    text-align: center;
+    margin: 0 auto;
   }
 }
-/* line 288, ../sass/_core.scss */
+/* line 332, ../sass/_core.scss */
 .clients li a {
-  display: inline-block;
+  display: block;
   vertical-align: top;
-  margin: 1.6em;
+  width: 100%;
+  height: 144px;
+  background-image: url("../img/logos.png");
+  background-repeat: no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 13 / 10), only screen and (min-resolution: 120dpi) {
+  /* line 332, ../sass/_core.scss */
+  .clients li a {
+    background-image: url("../img/logos@2x.png");
+    -moz-background-size: 1000px 150px;
+    -webkit-background-size: 1000px 150px;
+    background-size: 1000px 150px;
+  }
 }
 
-/* line 295, ../sass/_core.scss */
+/* line 344, ../sass/_core.scss */
 .client-kale a {
-  width: 89px;
-  height: 35px;
-  background-image: url("../img/logo-kale.png");
+  background-position: 0 0;
 }
 
-/* line 301, ../sass/_core.scss */
+/* line 345, ../sass/_core.scss */
 .client-cor a {
-  width: 66px;
-  height: 31px;
-  background-image: url("../img/logo-cor.png");
+  background-position: -164px 0;
 }
 
-/* line 307, ../sass/_core.scss */
+/* line 346, ../sass/_core.scss */
 .client-firstround a {
-  width: 98px;
-  height: 48px;
-  background-image: url("../img/logo-firstround.png");
-  position: relative;
-  top: -1em;
+  background-position: -328px 0;
 }
 
-/* line 315, ../sass/_core.scss */
+/* line 347, ../sass/_core.scss */
 .client-fortify a {
-  width: 142px;
-  height: 39px;
-  background-image: url("../img/logo-fortify.png");
+  background-position: -492px 0;
 }
 
-/* line 321, ../sass/_core.scss */
+/* line 348, ../sass/_core.scss */
 .client-suap a {
-  width: 127px;
-  height: 36px;
-  background-image: url("../img/logo-suap.png");
+  background-position: -656px 0;
 }
 
-/* line 327, ../sass/_core.scss */
+/* line 349, ../sass/_core.scss */
 .client-fosterly a {
-  width: 148px;
-  height: 29px;
-  background-image: url("../img/logo-fosterly.png");
+  background-position: -820px 0;
 }
 
-/* line 333, ../sass/_core.scss */
+/* line 351, ../sass/_core.scss */
 .location {
   position: relative;
   background-image: url("../img/alexandria.jpg");
@@ -2179,18 +2213,18 @@ body {
   color: white;
   padding: 10em 0;
 }
-/* line 345, ../sass/_core.scss */
+/* line 363, ../sass/_core.scss */
 .location h2, .location h3, .location p, .location ul {
   position: relative;
   z-index: 2;
 }
-/* line 350, ../sass/_core.scss */
+/* line 368, ../sass/_core.scss */
 .location h2 {
   font-weight: normal;
   font-size: 2em;
   margin-bottom: 0;
 }
-/* line 356, ../sass/_core.scss */
+/* line 374, ../sass/_core.scss */
 .location h3 {
   font-family: "chaparral-pro", "Chaparral Pro", "Georgia", sans-serif;
   color: #374D58;
@@ -2201,7 +2235,7 @@ body {
   margin-bottom: 5em;
   padding: 0 3em;
 }
-/* line 367, ../sass/_core.scss */
+/* line 385, ../sass/_core.scss */
 .location p {
   font-weight: 100;
   font-size: 1.2em;
@@ -2211,7 +2245,7 @@ body {
   padding: 0 3em;
 }
 
-/* line 377, ../sass/_core.scss */
+/* line 395, ../sass/_core.scss */
 .meetups {
   list-style: none;
   margin: 0;

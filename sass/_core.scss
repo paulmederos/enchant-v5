@@ -22,6 +22,10 @@ $rule_color: #CB390A;
   background: linear-gradient(to bottom,  $first_color 0%, $second_color 100%), $fallback_color; /* W3C */
 }
 
+$sprite_url:    "../img/logos.png";
+$sprite_url_2x: "../img/logos@2x.png";
+
+
 /*  ====================================================
     0.2 Media Query mixins
     - Mixins for inline MQs. Avoids goop at bottom of page, 
@@ -42,9 +46,36 @@ $rule_color: #CB390A;
   }
 }
 
+
+// For retina assets.
+// Pulled from @Stammy: http://paulstamatiou.com/responsive-retina-blog-development-part-2
+@mixin retina {
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.3), 
+  only screen and (-o-min-device-pixel-ratio: 13/10), 
+  only screen and (min-resolution: 120dpi) {
+    @content;
+  }
+}
+
+@mixin bg-size($width: auto, $height: 100%) {
+  -moz-background-size: $width $height;
+  -webkit-background-size: $width $height;
+  background-size: $width $height;
+}
+
+@mixin retina-sprite {
+  background-image: url($sprite_url_2x);
+  @include bg-size(1000px, 150px);
+}
+
+// Silly function to divide the width and height to save me 2 seconds
+// whenever I need to calculate the halved retina background position
+@function double-pos($w, $h) { @return $w*2 $h*2; }
+
 /*  ====================================================
     1.0 Generic/misc styles
     ==================================================== */
+
 body {
   font-family: $primary_font_family;
   color:#333;
@@ -141,15 +172,20 @@ body {
   margin:0 auto;
   background-image: url('../img/enchant-logo-light.png');
   background-repeat:no-repeat;
-  background-position:center center;
+  background-position:0 0;
   width:138px;
   height:34px;
+
+  @include retina {
+    background-image: url('../img/enchant-logo-light@2x.png');
+    @include bg-size(138px, 34px);
+  }
 }
 
 .header {
   display: block;
   width:100%;
-  height:540px;
+  height:320px;
   max-height: 960px;
   background-image:url('../img/header-inspiration.jpg');
   background-repeat:no-repeat;
@@ -159,10 +195,6 @@ body {
   -o-background-size: cover;
   background-size: cover;
   position:relative;
-
-  @include mq-tablet {
-    font-size: 2.2em;
-  }
 }
 
 .header h1 { z-index:2; position:relative; }
@@ -182,8 +214,6 @@ body {
 
 .why, .how, .location {
   text-align: center;
-  padding-top:6em;
-  padding-bottom:6em;
 }
 
 .rules {
@@ -193,7 +223,10 @@ body {
 }
   
 .rule {
-  margin-bottom: 6em;  
+  margin: 24em auto; 
+
+  @include mq-tablet { margin:12em auto;  }
+  @include mq-personal { margin:6em auto;  }
 }
 
 .rule h3 {
@@ -240,11 +273,15 @@ body {
   -o-background-size: cover;
   background-size: cover;
   color:white;
-  padding:10em 0;
+  padding:20em 0;
 
   dd, dt { margin:0; } 
   dl, p  { z-index:2; position: relative; }
-  p      { font-weight:100; }
+
+  p { font-weight:100; }
+
+  @include mq-tablet { padding:10em 0;}
+  @include mq-personal { padding:5em 0;}
 }
 
 .question-and-answer {
@@ -261,14 +298,19 @@ body {
   background:#444;
   padding:3em 0;
 
+  @include mq-personal {
+    padding: 3em 0 1.5em;
+  }
+
   p { 
     font-family: $secondary_font_family;
     font-size:1.2em;
     color:#222;
     font-style:italic;
     text-align:center;
-    margin:0 auto 4em;
-    padding:0 3em;
+    margin:0;
+
+    @include mq-personal { margin-bottom:.5em; }
   }
 }
 
@@ -277,58 +319,34 @@ body {
   padding:0;
   list-style: none;
 
-  li { display:inline-block; 
+  li { 
+    display:inline-block; 
+    width:162px; 
+
     @include mq-personal {
-      display:block; 
-      margin:2em auto; 
-      text-align:center;
+      display: block;
+      margin: 0 auto;
     }
   } 
 
   li a { 
-    display: inline-block; 
+    display:block; 
     vertical-align:top;
-    margin:1.6em; 
+    width:100%;
+    height:144px;
+
+    background-image: url($sprite_url);
+    background-repeat: no-repeat;
+    @include retina { @include retina-sprite; }
   }
 }
 
-.client-kale a {
-  width:89px;
-  height:35px;
-  background-image:url('../img/logo-kale.png');
-}
-
-.client-cor a {
-  width:66px;
-  height:31px;
-  background-image:url('../img/logo-cor.png');
-}
-
-.client-firstround a {
-  width:98px;
-  height:48px;
-  background-image:url('../img/logo-firstround.png');
-  position: relative;
-  top:-1em;
-}
-
-.client-fortify a {
-  width:142px;
-  height:39px;
-  background-image:url('../img/logo-fortify.png');
-}
-
-.client-suap a {
-  width:127px;
-  height:36px;
-  background-image:url('../img/logo-suap.png');
-}
-
-.client-fosterly a {
-  width:148px;
-  height:29px;
-  background-image:url('../img/logo-fosterly.png');
-}
+.client-kale a { background-position: 0 0; }
+.client-cor a { background-position: -164px 0; } 
+.client-firstround a { background-position: -328px 0; }
+.client-fortify a { background-position: -492px 0; }
+.client-suap a { background-position: -656px 0; }
+.client-fosterly a { background-position: -820px 0; }
 
 .location {
   position: relative;

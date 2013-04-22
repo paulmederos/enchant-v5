@@ -14,16 +14,16 @@ $(function() {
     resize = false;
 
     if ( $(window).width() < 865 ) {
-      newHeight = 440;
+      newHeight = 240;
     } else {
-      newHeight = 540;
+      newHeight = 320;
     }
 
     $(this).fadeOut().addClass('animated fadeOutDown');
     $(".header").append('<div class="overlay alt-overlay"></div>');
     $('.alt-overlay').fadeIn('slow');
     $(".header").animate({height: newHeight}, function(){
-      $(".header").removeAttr('style');
+      // $(".header").removeAttr('style');
     });
     
     $(".why").fadeIn(function(){
